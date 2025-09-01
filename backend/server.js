@@ -15,7 +15,7 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
   : [];
 
 app.use(cors({
-  origin: function(origin, callback) {
+  origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -35,13 +35,17 @@ app.get('/health', (req, res) => {
 app.post('/predict', (req, res) => {
   const { AS, AC, CE } = req.body;
 
+  const AS_num = parseFloat(AS);
+  const AC_num = parseFloat(AC);
+  const CE_num = parseFloat(CE);
+
   // Validate existence
   if ([AS, AC, CE].some(v => v === undefined)) {
     return res.status(400).json({ error: "Missing input values" });
   }
 
   // Validate numeric
-  if ([AS, AC, CE].some(v => typeof v !== 'number' || isNaN(v))) {
+  if ([AS_num, AC_num, CE_num].some(v => isNaN(v))) {
     return res.status(400).json({ error: "All input values must be numeric" });
   }
 
@@ -60,4 +64,4 @@ app.post('/predict', (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}`));
