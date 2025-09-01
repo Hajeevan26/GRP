@@ -49,6 +49,7 @@ function PredictionForm() {
           <label className="mb-1 font-semibold text-gray-700">AS (mm)</label>
           <input
             type="number"
+            step="any"
             value={AS}
             onChange={(e) => setAS(e.target.value)}
             className="border border-gray-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
@@ -60,6 +61,7 @@ function PredictionForm() {
           <label className="mb-1 font-semibold text-gray-700">AC</label>
           <input
             type="number"
+            step="any"
             value={AC}
             onChange={(e) => setAC(e.target.value)}
             className="border border-gray-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
@@ -71,6 +73,7 @@ function PredictionForm() {
           <label className="mb-1 font-semibold text-gray-700">CE (J)</label>
           <input
             type="number"
+            step="any"
             value={CE}
             onChange={(e) => setCE(e.target.value)}
             className="border border-gray-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
